@@ -7,14 +7,21 @@ package main
 import "fmt"
 
 func binarySearchRecursion(a []int, target, low, high int) int {
-	middle := (low + high) / 2
-	if a[middle] == target {
-		return middle
-	} else if a[middle] < target {
-		return binarySearchRecursion(a, target, middle+1, high)
-	} else {
-		return binarySearchRecursion(a, target, low, middle-1)
-	}
+	  if (low == high){
+	    if a[low] == target{
+	      return low
+	      } else {
+	        return -1
+	      }
+	  }
+	  middle := int((low + high)/2)
+	  if a[middle] == target{
+	    return middle
+	  }  else if target < a[middle]{
+	    return binarySearchRecursion(a, target, low, middle-1)
+	  } else {
+	    return binarySearchRecursion(a, target, middle+1, high)
+	  }
 }
 
 func initSearch(a []int) (int, int) {
